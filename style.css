@@ -1,0 +1,868 @@
+/* Importação das fontes do Google Fonts */
+/* Playfair Display para títulos maiores, Montserrat para títulos de seção e navegação, Open Sans para corpo de texto */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap');
+
+/* Variáveis CSS para cores e fontes */
+:root {
+    --color-dark-blue: #0A0A1A; /* Fundo principal */
+    --color-light-text: #F5F5F5; /* Texto principal */
+    --color-accent-purple: #8A2BE2; /* Azul Violeta */
+    --color-deep-indigo: #4B0082; /* Índigo */
+    --color-cyan: #00BCD4; /* Ciano */
+    --color-magenta: #E91E63; /* Magenta */
+    --color-gray-light: #CCCCCC; /* Cinza claro para bordas/separadores */
+
+    --font-heading-primary: 'Playfair Display', serif;
+    --font-heading-secondary: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    --spacing-unit: 1rem; /* Unidade base para espaçamento */
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-light-text);
+    background-color: var(--color-dark-blue);
+    -webkit-font-smoothing: antialiased; /* Suavização de fonte */
+    overflow-x: hidden; /* Previne rolagem horizontal */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Espaçamento lateral padrão */
+}
+
+.section-padding {
+    padding: 5rem 0; /* Padding padrão para seções */
+}
+
+/* Títulos */
+h1, h2, h3 {
+    font-family: var(--font-heading-secondary);
+    color: var(--color-light-text);
+    margin-bottom: 1.5rem;
+}
+
+.logo img {
+    height: 40px; /* Tamanho do logo no cabeçalho */
+    width: auto;
+    vertical-align: middle;
+}
+
+.hero-title {
+    font-family: var(--font-heading-primary);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Sombra mais destacada */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px; /* Mantido o espaçamento inferior para o logo na hero */
+}
+
+.hero-title img {
+    height: 100px; /* Tamanho do logo na seção hero */
+    width: auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-deep-indigo));
+    border-radius: 2px;
+}
+
+/* Links */
+a {
+    color: var(--color-light-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-purple);
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 50px; /* Botões arredondados */
+    font-family: var(--font-heading-secondary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--color-accent-purple), var(--color-deep-indigo));
+    color: var(--color-light-text);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+.primary-btn:hover {
+    background: linear-gradient(45deg, var(--color-deep-indigo), var(--color-accent-purple));
+    box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--color-cyan);
+    color: var(--color-cyan);
+    box-shadow: 0 3px 10px rgba(0, 188, 212, 0.3);
+}
+
+.secondary-btn:hover {
+    background: linear-gradient(45deg, var(--color-cyan), var(--color-magenta));
+    color: var(--color-light-text);
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Header Principal */
+.main-header {
+    background-color: rgba(10, 10, 26, 0.9); /* Fundo semi-transparente */
+    padding: 1.5rem 0; /* Adicionado padding vertical de volta para o header */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem; /* Ajustado para dar mais espaço nas bordas em telas menores */
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    display: flex; /* Sempre flex na horizontal */
+    gap: 2rem; /* Espaçamento padrão para desktop */
+    flex-wrap: nowrap; /* Impede quebra de linha */
+    justify-content: flex-end; /* Alinha os itens à direita */
+    align-items: center;
+    flex-grow: 1; /* Permite que a lista ocupe o espaço disponível */
+    min-width: 0; /* Essencial para que os itens possam encolher */
+}
+
+.main-nav .nav-list li {
+    flex-shrink: 1; /* Permite que os itens da lista encolham */
+    white-space: nowrap; /* Impede que o texto dos links quebre linha */
+}
+
+.main-nav .nav-list a {
+    font-family: var(--font-heading-secondary);
+    font-weight: 400;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 0.3rem;
+    padding: 0.5rem 0.8rem; /* Adiciona padding aos links para melhor área de clique */
+}
+
+/* Estilo para o underline padrão e hover */
+.main-nav .nav-list a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent-purple);
+    transition: width 0.3s ease;
+}
+
+.main-nav .nav-list a:hover::after {
+    width: 100%;
+}
+
+/* Estilo para o link de navegação ativo */
+.main-nav .nav-list a.active {
+    color: var(--color-accent-purple); /* Muda a cor do texto para destacar */
+    font-weight: 700; /* Torna o texto mais negrito */
+}
+
+.main-nav .nav-list a.active::after {
+    width: 100%; /* Garante que o underline esteja sempre visível */
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-cyan)); /* Um gradiente para o underline ativo */
+}
+
+/* Opcional: Adicionar um brilho sutil ao link ativo */
+.main-nav .nav-list a.active {
+    text-shadow: 0 0 8px rgba(138, 43, 226, 0.6);
+}
+
+/* Oculta o botão de menu hambúrguer completamente */
+.nav-toggle {
+    display: none !important;
+}
+
+/* Seção Hero */
+.hero-section {
+    display: flex;
+    flex-direction: row; /* Padrão desktop: imagem ao lado do texto */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    padding-top: 80px; /* Compensar o header fixo */
+    background: linear-gradient(135deg, var(--color-deep-indigo) 0%, var(--color-dark-blue) 100%);
+    position: relative;
+    overflow: hidden; /* Para garantir que a imagem não vaze */
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 600px; /* Limita a largura do texto */
+    text-align: center;
+    align-items: center; /* Centraliza o conteúdo (logo, texto, botão) */
+}
+
+
+.hero-description {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    color: rgba(245, 245, 245, 0.9);
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    z-index: 0;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Cantos arredondados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+}
+
+/* Seção Sobre - Estilos para o Slideshow */
+.about-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem; /* Espaçamento entre imagem e texto */
+    background-color: var(--color-dark-blue);
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    position: relative; /* Essencial para posicionar as imagens do slideshow */
+    height: 400px; /* Altura fixa para o container do slideshow */
+    overflow: hidden; /* Esconde partes das imagens que excedem */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.slideshow-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o container */
+    opacity: 0; /* Todas as imagens ocultas por padrão */
+    transition: opacity 1s ease-in-out, transform 0.3s ease-out; /* Transição para fade e crescimento */
+    border-radius: 15px; /* Cantos arredondados para as imagens do slideshow */
+}
+
+.slideshow-image.active-slide {
+    opacity: 1; /* Imagem ativa visível */
+}
+
+.slideshow-image.hover-grow {
+    transform: scale(1.05); /* Efeito de crescimento */
+}
+
+
+.about-text {
+    flex: 2;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: rgba(245, 245, 245, 0.85);
+}
+
+.highlight-text {
+    color: var(--color-accent-purple); /* Cor de destaque */
+    font-weight: 700; /* Negrito */
+    text-shadow: 0 0 5px rgba(137, 43, 226, 0.151); /* Sombra sutil para realçar */
+}
+
+/* Seção Música */
+.music-section {
+    background: linear-gradient(180deg, var(--color-dark-blue), var(--color-deep-indigo));
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 colunas em desktop, 1 em mobile */
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.music-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.music-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.music-item p {
+    font-size: 1rem;
+    color: rgba(245, 245, 245, 0.8);
+}
+
+.highlight-music {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    background-color: rgba(138, 43, 226, 0.1); /* Fundo sutil com cor de destaque */
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-music img {
+    width: 40%; /* Ocupa 40% da largura */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    object-fit: cover;
+}
+
+.highlight-text {
+    flex: 1;
+    text-align: left;
+}
+
+.highlight-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: rgba(245, 245, 245, 0.9);
+}
+
+/* Seção Filosofia */
+.philosophy-section {
+    background-color: var(--color-dark-blue);
+}
+
+.philosophy-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Alinha o topo do texto com o topo das imagens */
+    gap: 4rem;
+}
+
+.philosophy-text {
+    flex: 2;
+}
+
+.philosophy-text p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: rgba(245, 245, 245, 0.85);
+}
+
+.quote {
+    font-family: var(--font-heading-primary);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--color-accent-purple);
+    border-left: 5px solid var(--color-cyan);
+    padding-left: 1.5rem;
+    margin-top: 2rem;
+    line-height: 1.5;
+}
+
+.quote cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: rgba(245, 245, 245, 0.7);
+}
+
+.philosophy-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.philosophy-images img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+}
+
+/* Seção Contato */
+.contact-section {
+    background: linear-gradient(135deg, var(--color-deep-indigo), var(--color-dark-blue));
+    text-align: center;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--color-light-text);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--color-light-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent-purple);
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form .primary-btn {
+    width: auto; /* Ajusta a largura do botão para o conteúdo */
+    padding: 1rem 3rem;
+}
+
+/* Estilos para os Ícones de Redes Sociais */
+.social-links {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* Espaçamento entre os ícones */
+}
+
+.social-links p {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: rgba(245, 245, 245, 0.9);
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    text-decoration: none; /* Remove sublinhado padrão do link */
+}
+
+.icon-item:hover {
+    transform: translateY(-8px) scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(138, 43, 226, 0.6));
+}
+
+.icon-wrapper {
+    width: 80px; /* Tamanho base do ícone */
+    height: 80px;
+    border-radius: 20%; /* Levemente arredondado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, var(--color-deep-indigo), var(--color-accent-purple));
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s ease, box-shadow 0.3s ease;
+}
+
+.icon-item:hover .icon-wrapper {
+    background: linear-gradient(45deg, var(--color-cyan), var(--color-magenta));
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.6);
+}
+
+.icon-wrapper svg {
+    width: 60%; /* Tamanho do SVG dentro do wrapper */
+    height: 60%;
+    fill: var(--color-light-text); /* Cor dos ícones */
+    transition: fill 0.3s ease;
+}
+
+.icon-item:hover .icon-wrapper svg {
+    fill: var(--color-light-text); /* Mantém a cor do ícone no hover */
+}
+
+.icon-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-light-text);
+    text-transform: capitalize;
+}
+
+
+
+/* Estilos específicos para o ícone do Instagram (para o Path) */
+.instagram-icon path {
+    fill: var(--color-light-text); /* Garante que o path do Instagram seja branco */
+}
+
+/* Media Queries para Responsividade dos Ícones */
+@media (max-width: 768px) {
+    .social-links {
+        gap: 1.5rem;
+    }
+    .icon-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+    .icon-label {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-links {
+        gap: 1rem;
+    }
+    .icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    .icon-label {
+        font-size: 0.8rem;
+    }
+}
+
+/* .social-links {
+    margin-top: 2.5rem;
+}
+
+.social-links p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: rgba(245, 245, 245, 0.9);
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+} */
+
+/* Rodapé */
+.main-footer {
+    background-color: var(--color-dark-blue);
+    color: rgba(245, 245, 245, 0.7);
+    text-align: center;
+    padding: 2.5rem 0;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* Botão Flutuante WhatsApp */
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Caixa de Mensagem WhatsApp */
+.whatsapp-message-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: white;
+    border: 2px solid #25D366;
+    border-radius: 8px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.whatsapp-message-box textarea {
+    width: 200px;
+    height: 60px;
+    resize: none;
+    margin-bottom: 8px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.whatsapp-message-box button {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.whatsapp-message-box button:hover {
+    background: #1ebe57;
+}
+
+
+/* -------------------------------------- */
+/* Media Queries para Responsividade */
+/* -------------------------------------- */
+
+/* Tablets e dispositivos menores (max-width: 992px) */
+@media (max-width: 992px) {
+    .main-header .container {
+        padding: 0 0.5rem; /* Reduz o padding do container do header */
+    }
+
+    .main-nav .nav-list {
+        gap: 0.8rem; /* Reduz o espaçamento entre os links */
+        justify-content: space-evenly; /* Distribui o espaço mais uniformemente */
+    }
+    .main-nav .nav-list a {
+        font-size: 1rem; /* Diminui o tamanho da fonte dos links */
+        padding: 0.5rem 0.4rem; /* Reduz o padding dos links */
+    }
+
+    .hero-section {
+        flex-direction: column; /* Pilha em mobile */
+        text-align: center;
+        padding-top: 100px; /* Ajusta o padding para o header */
+    }
+
+    .hero-content {
+        padding: 2rem;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza o conteúdo (logo, texto, botão) */
+    }
+
+    .hero-title img{
+        margin-bottom: 90px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-image {
+        padding: 1.5rem;
+    }
+
+    .about-section,
+    .highlight-music,
+    .philosophy-content {
+        flex-direction: column; /* Pilha em mobile */
+        gap: 2.5rem;
+    }
+
+    .about-image {
+        height: 350px; /* Altura ajustada para mobile */
+    }
+
+    .about-image,
+    .highlight-music img,
+    .philosophy-images {
+        width: 100%; /* Imagens ocupam a largura total */
+    }
+
+    .highlight-music img {
+        width: 80%; /* Ajuste para a imagem de destaque da música */
+        margin: 0 auto; /* Centraliza */
+    }
+
+    .philosophy-images {
+        flex-direction: row; /* Imagens lado a lado no mobile se couber, ou empilhadas */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .philosophy-images img {
+        width: 48%; /* Duas imagens por linha */
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-padding {
+        padding: 3rem 0;
+    }
+}
+
+/* Celulares pequenos (max-width: 600px) */
+@media (max-width: 600px) {
+    h1.logo {
+        font-size: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        margin: 20px;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .main-nav .nav-list {
+        gap: 0.5rem; /* Espaçamento ainda menor para celulares */
+        justify-content: space-between; /* Maximiza a distribuição do espaço */
+    }
+    .main-nav .nav-list a {
+        font-size: 0.9rem; /* Tamanho de fonte mínimo */
+        padding: 0.5rem 0.2rem; /* Padding mínimo */
+    }
+
+    .music-grid {
+        grid-template-columns: 1fr; /* Uma coluna em celulares */
+    }
+
+    .highlight-music {
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .highlight-music img {
+        width: 90%;
+    }
+
+    .philosophy-images {
+        flex-direction: column; /* Empilha as imagens em celulares pequenos */
+    }
+
+    .philosophy-images img {
+        width: 100%;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .social-links img {
+        width: 35px;
+        height: 35px;
+    }
+}
