@@ -760,14 +760,18 @@ a:hover {
         flex-direction: column; /* Pilha em mobile */
         text-align: center;
         padding-top: 100px; /* Ajusta o padding para o header */
+       
+        
     }
 
     .hero-content {
+        background-color: blue;
         padding: 2rem;
         max-width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center; /* Centraliza o conteúdo (logo, texto, botão) */
+        margin: 0 auto;
     }
 
     .hero-title img{
