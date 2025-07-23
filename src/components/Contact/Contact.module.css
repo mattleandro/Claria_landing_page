@@ -3,6 +3,7 @@
 .contact-section {
     background: linear-gradient(135deg, var(--color-deep-indigo), var(--color-dark-blue));
     text-align: center;
+    border-radius: 10px;
 }
 
 
