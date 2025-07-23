@@ -51,7 +51,7 @@ function Music({ id }) {
           </p>
           {/* Agora, 'secondary-btn' terá todas as propriedades, incluindo a base */}
           <a
-            href="open.spotify.com/intl-pt/album/7sNlDAVnqTf44AsqzYvGc0" // Lembre-se de substituir pelo link real
+            href="https://open.spotify.com/intl-pt/album/7sNlDAVnqTf44AsqzYvGc0" // Lembre-se de substituir pelo link real
             target="_blank"
             rel="noopener noreferrer"
             className={styles['secondary-btn']} // Apenas a classe de módulo

@@ -85,7 +85,7 @@ function Contact({ id }) {
           <span className={styles['icon-label']}>Youtube</span>
         </a>
         {/* Spotify Icon */}
-        <a href="http://spotify.com/your-spotify-profile" target="_blank" rel="noopener noreferrer" className={styles['icon-item']} aria-label="Spotify da Clariá">
+        <a href="https://open.spotify.com/intl-pt/album/7sNlDAVnqTf44AsqzYvGc0" target="_blank" rel="noopener noreferrer" className={styles['icon-item']} aria-label="Spotify da Clariá">
           <div className={styles['icon-wrapper']}>
             <svg viewBox="0 0 24 24" className={styles['social-icon']}>
               <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
@@ -94,7 +94,7 @@ function Contact({ id }) {
           <span className={styles['icon-label']}>Spotify</span>
         </a>
         {/* Hyperddit Icon */}
-        <a href="https://hyperddit.com/jc5rhf" target="_blank" rel="noopener noreferrer" className={styles['icon-item']} aria-label="Hyperddit da Clariá">
+        <a href="https://hypeddit.com/jc5rhf" target="_blank" rel="noopener noreferrer" className={styles['icon-item']} aria-label="Hyperddit da Clariá">
           <div className={styles['icon-wrapper']}>
             <svg viewBox="0 0 24 24" className={styles['social-icon']}>
               <path d="M0 0v24h24V0H0zm4.602 4.025h2.244c.509 0 .716.215.716.717v5.64h8.883v-5.64c0-.509.215-.717.717-.717h2.229c.5 0 .71.23.724.717v14.516c0 .509-.215.717-.717.717h-2.23c-.51 0-.717-.215-.717-.717v-5.735H7.562v5.735c0 .516-.215.717-.716.717H4.602c-.51 0-.717-.208-.717-.717V4.742c0-.509.207-.717.717-.717z" />

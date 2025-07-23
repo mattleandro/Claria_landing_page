@@ -2,6 +2,7 @@
 
 .philosophy-section {
     background-color: var(--color-dark-blue);
+    border-radius: 10px;
 }
 
 .section-title { 

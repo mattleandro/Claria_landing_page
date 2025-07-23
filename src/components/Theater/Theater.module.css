@@ -1,10 +1,11 @@
 /* src/components/Theater/Theater.module.css */
 
-.music-section { /* Reutiliza o estilo de fundo da seção de música */
+.music-section { 
     background: linear-gradient(180deg, var(--color-dark-blue), var(--color-deep-indigo));
+    border-radius: 10px;
 }
 
-.section-title { /* Títulos de seção genéricos, podem ir para um arquivo de "SharedStyles" ou em cada módulo */
+.section-title {
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
