@@ -17,7 +17,7 @@ function WhatsAppButton() {
   const handleMouseLeave = () => {
     messageBoxTimeoutRef.current = setTimeout(() => {
       setShowMessageBox(false);
-    }, 10000);
+    }, 60000);
   };
 
   const sendWhatsAppMessage = () => {
