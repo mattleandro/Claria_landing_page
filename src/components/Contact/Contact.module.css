@@ -5,15 +5,16 @@
     text-align: center;
 }
 
-.section-title { /* Títulos de seção genéricos */
+
+.section-title { 
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
     position: relative;
     padding-bottom: 1rem;
+    margin-top: 100px;
 }
-
 .section-title::after {
     content: '';
     position: absolute;
@@ -76,9 +77,33 @@ textarea::placeholder {
     resize: vertical;
 }
 
-.contact-form .primary-btn { /* Pode ser uma classe separada para botões */
-    width: auto;
-    padding: 1rem 3rem;
+/* --- ESTILOS DO BOTÃO 'ENVIAR MENSAGEM' (PRIMARY BUTTON) --- */
+/* Esta classe agora contém todas as propriedades necessárias para o botão */
+.primary-btn {
+    display: inline-block;
+    padding: 1rem 3rem; /* Ajuste o padding se desejar */
+    border-radius: 25px; /* <--- AQUI! Este valor controla o arredondamento */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: none; /* Garante que não haja bordas padrão */
+    outline: none; /* Remove o contorno de foco padrão */
+    
+    /* Propriedades específicas do botão primário */
+    background: linear-gradient(45deg, var(--color-accent-purple), var(--color-deep-indigo));
+    color: var(--color-light-text);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+    width: auto; /* Pode ser específico para o formulário */
+}
+
+.primary-btn:hover {
+    background: linear-gradient(45deg, var(--color-cyan), var(--color-magenta));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.6);
 }
 
 /* Estilos para os Ícones de Redes Sociais */
@@ -134,12 +159,12 @@ textarea::placeholder {
 .icon-wrapper svg {
     width: 60%;
     height: 60%;
-    fill: var(--color-light-text);
+    fill: var(--color-light-text); /* Cor padrão dos ícones */
     transition: fill 0.3s ease;
 }
 
 .icon-item:hover .icon-wrapper svg {
-    fill: var(--color-light-text);
+    fill: var(--color-light-text); /* Garante que a cor não mude ao hover se já for light-text */
 }
 
 .icon-label {
@@ -149,11 +174,18 @@ textarea::placeholder {
     text-transform: capitalize;
 }
 
-.instagram-icon path { /* Específico de SVG, pode ser mantido aqui ou movido */
+/* Classe geral para o preenchimento de SVGs de ícones sociais */
+.social-icon {
     fill: var(--color-light-text);
 }
 
-/* Media Queries para Responsividade dos Ícones */
+/* Media Queries para Responsividade */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .social-links {
         gap: 1.5rem;
@@ -164,6 +196,22 @@ textarea::placeholder {
     }
     .icon-label {
         font-size: 0.9rem;
+    }
+    .contact-form {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .contact-form {
+        padding: 1.5rem;
+    }
+    .primary-btn {
+        width: 100%; /* Botão ocupa a largura total em telas pequenas */
+        padding: 0.8rem 1.5rem;
     }
 }
 
@@ -177,21 +225,5 @@ textarea::placeholder {
     }
     .icon-label {
         font-size: 0.8rem;
-    }
-}
-
-.section-title {
-    font-size: 2rem;
-}
-@media (max-width: 600px) {
-    .section-title {
-        font-size: 1.8rem;
-    }
-    .contact-form {
-        padding: 1.5rem;
-    }
-    .social-links img { /* Removido, já que você usará SVGs inline */
-        width: 35px;
-        height: 35px;
     }
 }

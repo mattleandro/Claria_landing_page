@@ -15,9 +15,11 @@
     margin-bottom: 3rem;
     position: relative;
     padding-bottom: 1rem;
+    margin-top: 100px;
 }
 
 .section-title::after {
+    
     content: '';
     position: absolute;
     left: 50%;

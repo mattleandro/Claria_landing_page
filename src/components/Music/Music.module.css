@@ -2,15 +2,17 @@
 
 .music-section {
     background: linear-gradient(180deg, var(--color-dark-blue), var(--color-deep-indigo));
+    border-radius: 10px;
 }
 
-.section-title { /* Títulos de seção genéricos */
+.section-title { 
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
     position: relative;
     padding-bottom: 1rem;
+    margin-top: 100px;
 }
 
 .section-title::after {
@@ -81,7 +83,8 @@
 }
 
 /* Botões */
-.secondary-btn { /* Botões gerais, podem ser um componente à parte */
+/* secondary-btn está aqui e será hashado */
+.secondary-btn { 
     background: transparent;
     border: 2px solid var(--color-cyan);
     color: var(--color-cyan);
@@ -95,6 +98,39 @@
     box-shadow: 0 5px 15px rgba(0, 188, 212, 0.5);
     transform: translateY(-2px);
 }
+
+
+/* secondary-btn com todas as propriedades incorporadas */
+
+.secondary-btn {
+    /* PROPRIEDADES BASE DO BOTÃO (coloque aqui o que estava em .btn ou .btnBase) */
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 25px; /* <--- AQUI! Mude este valor para controlar o arredondamento */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    /* PROPRIEDADES ESPECÍFICAS DO secondary-btn (já estavam aqui) */
+    background: transparent;
+    border: 2px solid var(--color-cyan);
+    color: var(--color-cyan);
+    box-shadow: 0 3px 10px rgba(0, 188, 212, 0.3);
+}
+
+.secondary-btn:hover {
+    background: linear-gradient(45deg, var(--color-cyan), var(--color-magenta));
+    color: var(--color-light-text);
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ... (media queries existentes) ... */
 
 /* Media Queries */
 @media (max-width: 992px) {
