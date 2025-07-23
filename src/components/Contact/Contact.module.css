@@ -1,0 +1,197 @@
+/* src/components/Contact/Contact.module.css */
+
+.contact-section {
+    background: linear-gradient(135deg, var(--color-deep-indigo), var(--color-dark-blue));
+    text-align: center;
+}
+
+.section-title { /* Títulos de seção genéricos */
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-deep-indigo));
+    border-radius: 2px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--color-light-text);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--color-light-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+textarea::placeholder {
+    color: rgba(128, 128, 128, 0.6); /* Cinza com transparência */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent-purple);
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.3);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form .primary-btn { /* Pode ser uma classe separada para botões */
+    width: auto;
+    padding: 1rem 3rem;
+}
+
+/* Estilos para os Ícones de Redes Sociais */
+.social-links {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem; /* Espaçamento entre os ícones */
+}
+
+.social-links p {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: rgba(245, 245, 245, 0.9);
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    text-decoration: none;
+}
+
+.icon-item:hover {
+    transform: translateY(-8px) scale(1.05);
+    filter: drop-shadow(0 8px 20px rgba(138, 43, 226, 0.6));
+}
+
+.icon-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, var(--color-deep-indigo), var(--color-accent-purple));
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s ease, box-shadow 0.3s ease;
+}
+
+.icon-item:hover .icon-wrapper {
+    background: linear-gradient(45deg, var(--color-cyan), var(--color-magenta));
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.6);
+}
+
+.icon-wrapper svg {
+    width: 60%;
+    height: 60%;
+    fill: var(--color-light-text);
+    transition: fill 0.3s ease;
+}
+
+.icon-item:hover .icon-wrapper svg {
+    fill: var(--color-light-text);
+}
+
+.icon-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-light-text);
+    text-transform: capitalize;
+}
+
+.instagram-icon path { /* Específico de SVG, pode ser mantido aqui ou movido */
+    fill: var(--color-light-text);
+}
+
+/* Media Queries para Responsividade dos Ícones */
+@media (max-width: 768px) {
+    .social-links {
+        gap: 1.5rem;
+    }
+    .icon-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+    .icon-label {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-links {
+        gap: 1rem;
+    }
+    .icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    .icon-label {
+        font-size: 0.8rem;
+    }
+}
+
+.section-title {
+    font-size: 2rem;
+}
+@media (max-width: 600px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .contact-form {
+        padding: 1.5rem;
+    }
+    .social-links img { /* Removido, já que você usará SVGs inline */
+        width: 35px;
+        height: 35px;
+    }
+}

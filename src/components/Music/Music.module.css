@@ -1,0 +1,132 @@
+/* src/components/Music/Music.module.css */
+
+.music-section {
+    background: linear-gradient(180deg, var(--color-dark-blue), var(--color-deep-indigo));
+}
+
+.section-title { /* Títulos de seção genéricos */
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-deep-indigo));
+    border-radius: 2px;
+}
+
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 colunas em desktop, 1 em mobile */
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.music-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.music-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.music-item p {
+    font-size: 1rem;
+    color: rgba(245, 245, 245, 0.8);
+}
+
+.highlight-music {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    background-color: rgba(138, 43, 226, 0.1); /* Fundo sutil com cor de destaque */
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-music img {
+    width: 40%; /* Ocupa 40% da largura */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    object-fit: cover;
+}
+
+.highlight-text {
+    flex: 1;
+    text-align: left;
+}
+
+.highlight-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: rgba(245, 245, 245, 0.9);
+}
+
+/* Botões */
+.secondary-btn { /* Botões gerais, podem ser um componente à parte */
+    background: transparent;
+    border: 2px solid var(--color-cyan);
+    color: var(--color-cyan);
+    box-shadow: 0 3px 10px rgba(0, 188, 212, 0.3);
+}
+
+.secondary-btn:hover {
+    background: linear-gradient(45deg, var(--color-cyan), var(--color-magenta));
+    color: var(--color-light-text);
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .highlight-music {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .highlight-music img {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .music-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .highlight-music {
+        padding: 2rem;
+    }
+
+    .highlight-music img {
+        width: 90%;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,78 @@
+/* src/index.css */
+
+/* Importação das fontes do Google Fonts */
+/* Playfair Display para títulos maiores, Montserrat para títulos de seção e navegação, Open Sans para corpo de texto */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap');
+
+/* Variáveis CSS para cores e fontes */
+:root {
+    --color-dark-blue: #0A0A1A; /* Fundo principal */
+    --color-light-text: #F5F5F5; /* Texto principal */
+    --color-accent-purple: #8A2BE2; /* Azul Violeta */
+    --color-deep-indigo: #4B0082; /* Índigo */
+    --color-cyan: #00BCD4; /* Ciano */
+    --color-magenta: #E91E63; /* Magenta */
+    --color-gray-light: #CCCCCC; /* Cinza claro para bordas/separadores */
+
+    --font-heading-primary: 'Playfair Display', serif;
+    --font-heading-secondary: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    --spacing-unit: 1rem; /* Unidade base para espaçamento */
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-light-text);
+    background-color: var(--color-dark-blue);
+    -webkit-font-smoothing: antialiased; /* Suavização de fonte */
+    overflow-x: hidden; /* Previne rolagem horizontal */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* Espaçamento lateral padrão */
+}
+
+.section-padding {
+    padding: 5rem 0; /* Padding padrão para seções */
+}
+
+/* Títulos globais, se aplicável a todos os h1, h2, h3 */
+h1, h2, h3 {
+    font-family: var(--font-heading-secondary);
+    color: var(--color-light-text);
+    margin-bottom: 1.5rem;
+}
+
+/* Links globais */
+a {
+    color: var(--color-light-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-purple);
+}
+
+/* Regras de media query globais ou específicas que afetam múltiplos componentes */
+/* Por exemplo, se h1.logo for usado apenas no hero-title, ele deve ir para Hero.module.css */
+/* Mas se for um estilo global para h1 em qualquer lugar, pode ficar aqui */
+@media (max-width: 600px) {
+    /* Exemplo: se h1.logo for usado apenas no hero-title, esta regra seria ajustada no Hero.module.css */
+    /* h1.logo { font-size: 2rem; } */
+}

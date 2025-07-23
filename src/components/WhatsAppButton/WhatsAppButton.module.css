@@ -1,0 +1,64 @@
+/* src/components/WhatsAppButton/WhatsAppButton.module.css */
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Caixa de Mensagem WhatsApp */
+.whatsapp-message-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background: white;
+    border: 2px solid #25D366;
+    border-radius: 8px;
+    padding: 10px;
+    /* REMOVA ESTA LINHA: display: none; */ 
+    flex-direction: column; /* Manter flex-direction para a estrutura interna */
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.whatsapp-message-box textarea {
+    width: 200px;
+    height: 60px;
+    resize: none;
+    margin-bottom: 8px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.whatsapp-message-box button {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.whatsapp-message-box button:hover {
+    background: #1ebe57;
+}

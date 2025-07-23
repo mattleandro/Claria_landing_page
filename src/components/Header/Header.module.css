@@ -1,0 +1,101 @@
+/* src/components/Header/Header.module.css */
+
+.main-header {
+    background-color: rgba(10, 10, 26, 0.9); /* Fundo semi-transparente */
+    padding: 1.5rem 0; /* Adicionado padding vertical de volta para o header */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem; /* Ajustado para dar mais espaço nas bordas em telas menores */
+}
+
+.logo img {
+    height: 40px; /* Tamanho do logo no cabeçalho */
+    width: auto;
+    vertical-align: middle;
+}
+
+.nav-list { /* Era .main-nav .nav-list */
+    list-style: none; /* */
+    display: flex; /* */
+    gap: 2rem; /* */
+    flex-wrap: nowrap; /* */
+    justify-content: flex-end; /* */
+    align-items: center; /* */
+    flex-grow: 1; /* */
+    min-width: 0; /* */
+}
+
+.nav-list li { /* Era .main-nav .nav-list li */
+    flex-shrink: 1; /* */
+    white-space: nowrap; /* */
+}
+
+/* Novo nome para o link do item da lista */
+.nav-list--item { /* Era .main-nav .nav-list a */
+    font-family: var(--font-heading-secondary); /* */
+    font-weight: 400; /* */
+    font-size: 1.1rem; /* */
+    position: relative; /* */
+    padding-bottom: 0.3rem; /* */
+    padding: 0.5rem 0.8rem; /* */
+}
+
+.nav-list--item::after { /* Era .main-nav .nav-list a::after */
+    content: ''; /* */
+    position: absolute; /* */
+    left: 0; /* */
+    bottom: 0; /* */
+    width: 0; /* */
+    height: 2px; /* */
+    background: var(--color-accent-purple); /* */
+    transition: width 0.3s ease; /* */
+}
+
+.nav-list--item:hover::after { /* Era .main-nav .nav-list a:hover::after */
+    width: 100%; /* */
+}
+
+.nav-list--item.active { /* Era .main-nav .nav-list a.active */
+    color: var(--color-accent-purple); /* */
+    font-weight: 700; /* */
+    text-shadow: 0 0 8px rgba(138, 43, 226, 0.6); /* */
+}
+
+.nav-list--item.active::after { /* Era .main-nav .nav-list a.active::after */
+    width: 100%; /* */
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-cyan)); /* */
+}
+
+/* Mantenha as media queries sem as aninhações que foram removidas */
+@media (max-width: 992px) {
+    /* ... */
+    .nav-list {
+        gap: 0.8rem; /* */
+        justify-content: space-evenly; /* */
+    }
+    .nav-list--item { /* Era .main-nav .nav-list a */
+        font-size: 1rem; /* */
+        padding: 0.5rem 0.4rem; /* */
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-list {
+        gap: 0.5rem; /* */
+        justify-content: space-between; /* */
+    }
+    .nav-list--item { /* Era .main-nav .nav-list a */
+        font-size: 0.9rem; /* */
+        padding: 0.5rem 0.2rem; /* */
+    }
+}

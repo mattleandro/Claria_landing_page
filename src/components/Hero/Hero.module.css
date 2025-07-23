@@ -1,0 +1,133 @@
+/* src/components/Hero/Hero.module.css */
+
+.hero-section {
+    display: flex;
+    flex-direction: row; /* Padrão desktop: imagem ao lado do texto */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    padding-top: 80px; /* Compensar o header fixo */
+    background: linear-gradient(135deg, var(--color-deep-indigo) 0%, var(--color-dark-blue) 100%);
+    position: relative;
+    overflow: hidden; /* Para garantir que a imagem não vaze */
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 600px; /* Limita a largura do texto */
+    text-align: center;
+    align-items: center; /* Centraliza o conteúdo (logo, texto, botão) */
+    margin-left: 200px;
+}
+
+.hero-title {
+    font-family: var(--font-heading-primary);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Sombra mais destacada */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px; /* Mantido o espaçamento inferior para o logo na hero */
+}
+
+.hero-title img {
+    height: 100px; /* Tamanho do logo na seção hero */
+    width: auto;
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    color: rgba(245, 245, 245, 0.9);
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    z-index: 0;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Cantos arredondados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+}
+
+/* Botões */
+.btn { /* Botões gerais, podem ser um componente à parte */
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-family: var(--font-heading-secondary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--color-accent-purple), var(--color-deep-indigo));
+    color: var(--color-light-text);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+.primary-btn:hover {
+    background: linear-gradient(45deg, var(--color-deep-indigo), var(--color-accent-purple));
+    box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    .hero-content {
+        padding: 2rem;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .hero-title img{
+        margin-bottom: 90px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-image {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2.5rem;
+        margin: 20px;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
