@@ -23,26 +23,21 @@
 }
 
 .hero-title {
-    font-family: var(--font-heading-primary);
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.1;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Sombra mais destacada */
-    display: flex;
-    justify-content: center;
+    
     margin-bottom: 100px; /* Mantido o espaçamento inferior para o logo na hero */
 }
 
 .hero-title img {
-    height: 100px; /* Tamanho do logo na seção hero */
+
     width: auto;
 }
 
 .hero-description {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     margin-bottom: 2rem;
     line-height: 1.8;
     color: rgba(245, 245, 245, 0.9);
+    font-weight: bold;
 }
 
 .hero-image {

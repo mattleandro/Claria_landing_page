@@ -1,7 +1,7 @@
 /* src/components/Header/Header.module.css */
 
 .main-header {
-    background-color: rgba(10, 10, 26, 0.9); /* Fundo semi-transparente */
+    background-color: rgba(10, 10, 26, 0.637); /* Fundo semi-transparente */
     padding: 1.5rem 0; /* Adicionado padding vertical de volta para o header */
     position: fixed;
     width: 100%;
@@ -19,9 +19,10 @@
 }
 
 .logo img {
-    height: 40px; /* Tamanho do logo no cabeçalho */
-    width: auto;
+    height: 60px; /* Tamanho do logo no cabeçalho */
+    width: 100%;
     vertical-align: middle;
+    padding-left: 250px;
 }
 
 .nav-list { /* Era .main-nav .nav-list */
@@ -78,7 +79,7 @@
 
 /* Mantenha as media queries sem as aninhações que foram removidas */
 @media (max-width: 992px) {
-    /* ... */
+
     .nav-list {
         gap: 0.8rem; /* */
         justify-content: space-evenly; /* */
@@ -87,9 +88,25 @@
         font-size: 1rem; /* */
         padding: 0.5rem 0.4rem; /* */
     }
+
+        .logo img {
+    height: 60px; /* Tamanho do logo no cabeçalho */
+    width: 100%;
+    vertical-align: middle;
+    padding: 0px 0px;
+}
+
+    
 }
 
 @media (max-width: 600px) {
+
+    .logo img {
+    height: 60px; /* Tamanho do logo no cabeçalho */
+    width: 100%;
+    vertical-align: middle;
+    padding: 0px 0px;
+}
     .nav-list {
         gap: 0.5rem; /* */
         justify-content: space-between; /* */
