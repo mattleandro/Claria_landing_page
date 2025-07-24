@@ -2,16 +2,17 @@
 .language-switcher {
   position: fixed;
   bottom: 700px; /* Posição para desktop */
-  right: 2px;    /* Posição para desktop */
+  right: 50px; /* Posição para desktop */
   display: flex;
   flex-direction: column; /* Coloca os botões um abaixo do outro por padrão */
   gap: 8px;
   z-index: 1000;
-  
+
   background-color: var(--color-dark-blue);
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  max-width: auto;
 }
 
 .language-button {
@@ -19,20 +20,19 @@
   font-size: 0.9rem;
   font-weight: 400;
 
-  background-color: #FFFFFF; /* Fundo branco para os botões */
-  color: var(--color-dark-blue); /* Texto em azul escuro do seu tema */
+  background-color: #ffffff;
+  color: var(--color-dark-blue);
   border: 1px solid var(--color-gray-light);
-  
+
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px; /* Espaçamento entre o ícone e o texto */
-  /* Correção: remova max-width: 50px se min-width é 100px para desktop */
-  width: auto; /* Deixa a largura se ajustar ao conteúdo (ícone + texto) */
-  min-width: 100px; /* Largura mínima para desktop com texto */
+  gap: 8px;
+  width: 45px;
+  min-width: 20px;
   height: 35px;
   transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease, color 0.3s ease;
 }
@@ -62,34 +62,51 @@
   color: inherit;
 }
 
-/* Media query para dispositivos móveis */
-@media (max-width: 768px) {
+/* --- Media Queries para Mobile (Ajustes para LanguageSwitcher) --- */
+@media (max-width: 992px) {
+  /* Oculta o LanguageSwitcher padrão na posição fixa para mobile */
   .language-switcher {
-    bottom: 550px; /* Ajuste para o mobile, para não colidir com o botão do WhatsApp */
-    right: 15px; /* Ajuste para o mobile */
-    flex-direction: column; /* Manter coluna no mobile */
-    gap: 5px;
-    padding: 8px;
-  }
-
-  /* Ajustes para o botão no mobile - sem texto */
-  .language-button {
-    width: 45px; /* Largura menor para caber só a bandeira */
-    height: 30px; /* Altura menor para caber só a bandeira */
-    padding: 5px; /* Padding ajustado para o ícone */
-    min-width: unset; /* Remove largura mínima para mobile */
-    gap: 0; /* Remove o espaçamento entre ícone e texto */
-    /* Removendo background-color aqui para que o padrão do desktop se aplique,
-       mas se você quer um fundo diferente no mobile, defina-o aqui. */
-  }
-
-  .flagIcon {
-    width: 28px; /* Ícone um pouco maior para preencher o botão */
-    height: 20px;
-  }
-
-  /* Faz o texto desaparecer no mobile */
-  .langText {
     display: none;
+  }
+
+  /* Estilos quando o LanguageSwitcher está dentro do Header (mobile) */
+  .language-switcher--in-header {
+    display: flex; /* Torna visível */
+    position: static; /* Remove o posicionamento fixo */
+    flex-direction: row; /* Coloca os botões lado a lado */
+    justify-content: center; /* Centraliza os botões */
+    align-items: center;
+    width: 100%;
+    background-color: transparent; /* Remove o background para integrar ao menu */
+    box-shadow: none; /* Remove a sombra */
+    padding: 0; /* Remove o padding */
+    gap: 15px; /* Ajusta o espaçamento entre os botões */
+    margin-top: 10px; /* Adiciona um pouco de espaço acima */
+  }
+
+  .language-switcher--in-header .language-button {
+    width: 60px; /* Aumenta um pouco a largura para melhor toque */
+    height: 40px; /* Aumenta a altura */
+    padding: 8px; /* Ajusta o padding */
+    font-size: 1rem;
+    gap: 5px; /* Pequeno espaçamento entre ícone e texto (se houver) */
+  }
+
+  .language-switcher--in-header .flagIcon {
+    width: 30px; /* Ícone ligeiramente maior */
+    height: 22px;
+  }
+}
+
+/* --- Media Queries para Telas Menores (Ajustes Finais) --- */
+@media (max-width: 600px) {
+  .language-switcher--in-header .language-button {
+    width: 55px; /* Ajuste para telas muito pequenas */
+    height: 35px;
+  }
+
+  .language-switcher--in-header .flagIcon {
+    width: 25px;
+    height: 18px;
   }
 }

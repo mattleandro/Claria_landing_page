@@ -8,14 +8,12 @@ import Theater from './components/Theater/Theater';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
-import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher'; // Importe o novo componente
+// import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher'; // REMOVA esta linha
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
-    // Certifique-se de que 'main section[id]' está correto com a sua estrutura HTML
-    // Se suas seções não estiverem dentro de um <main> elas não serão detectadas.
     const sections = document.querySelectorAll('section[id]');
     const headerOffset = 80; // Compensar o header fixo
 
@@ -23,7 +21,7 @@ function App() {
       let current = '';
       const scrollY = window.scrollY;
 
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
 
@@ -52,7 +50,7 @@ function App() {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: "smooth"
+        behavior: 'smooth',
       });
     }
   };
@@ -69,7 +67,7 @@ function App() {
         <Contact id="contato" />
       </main>
       <WhatsAppButton />
-      <LanguageSwitcher />
+      {/* <LanguageSwitcher /> - Este componente não será mais renderizado aqui */}
       <Footer />
     </>
   );

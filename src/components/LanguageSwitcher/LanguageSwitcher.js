@@ -5,7 +5,8 @@ import styles from './LanguageSwitcher.module.css';
 import FlagBR from '../../assets/flag_br.svg';
 import FlagUS from '../../assets/flag_us.svg';
 
-function LanguageSwitcher() {
+// Recebe a prop 'inHeader'
+function LanguageSwitcher({ inHeader }) {
   const { t, i18n } = useTranslation();
 
   const changeLanguage = (lng) => {
@@ -14,20 +15,18 @@ function LanguageSwitcher() {
 
   // Função auxiliar para verificar se o idioma atual corresponde ao botão
   const isActive = (buttonLangCode) => {
-    // i18n.language pode ser 'pt-BR', 'en-US', etc.
-    // Verificamos se começa com 'pt' ou 'en'
     return i18n.language.startsWith(buttonLangCode);
   };
 
   return (
-    <div className={styles['language-switcher']}>
+    // Adiciona uma classe condicional baseada na prop 'inHeader'
+    <div className={`${styles['language-switcher']} ${inHeader ? styles['language-switcher--in-header'] : ''}`}>
       <button
         className={`${styles['language-button']} ${isActive('pt') ? styles.activeLang : ''}`}
         onClick={() => changeLanguage('pt')}
         aria-label={t('switchLanguageToPortuguese')}
       >
         <img src={FlagBR} alt={t('flagBrazilAlt')} className={styles.flagIcon} />
-        <span className={styles.langText}>{t('PT-BR')}</span>
       </button>
 
       <button
@@ -36,7 +35,6 @@ function LanguageSwitcher() {
         aria-label={t('switchLanguageToEnglish')}
       >
         <img src={FlagUS} alt={t('flagUnitedStatesAlt')} className={styles.flagIcon} />
-        <span className={styles.langText}>{t('EN-US')}</span>
       </button>
     </div>
   );

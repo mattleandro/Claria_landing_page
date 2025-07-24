@@ -69,10 +69,6 @@ a:hover {
     color: var(--color-accent-purple);
 }
 
-/* Regras de media query globais ou específicas que afetam múltiplos componentes */
-/* Por exemplo, se h1.logo for usado apenas no hero-title, ele deve ir para Hero.module.css */
-/* Mas se for um estilo global para h1 em qualquer lugar, pode ficar aqui */
+
 @media (max-width: 600px) {
-    /* Exemplo: se h1.logo for usado apenas no hero-title, esta regra seria ajustada no Hero.module.css */
-    /* h1.logo { font-size: 2rem; } */
 }
