@@ -1,7 +1,10 @@
+// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './index.css'; // Mantenha este para estilos globais
+import './index.css';
+import './in18n'; 
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

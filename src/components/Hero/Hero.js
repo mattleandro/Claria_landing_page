@@ -1,28 +1,31 @@
 // src/components/Hero/Hero.js
 import React from 'react';
-import styles from './Hero.module.css'; // Importa o CSS Module
-import logoClaria from '../../assets/logo_claria.png'; // Caminho para sua imagem
-import clariaDestaque from '../../assets/claria_destaque_red.jpg'; // Caminho para sua imagem
+import { useTranslation } from 'react-i18next'; // Importe o hook useTranslation
+import styles from './Hero.module.css';
+import logoClaria from '../../assets/logo_claria.png';
+import clariaDestaque from '../../assets/claria_destaque_red.jpg';
 
 function Hero({ id, scrollToSection }) {
+  const { t } = useTranslation(); 
+
   return (
     <section id={id} className={styles['hero-section']}>
       <div className={styles['hero-content']}>
         <div className={styles['hero-title']}>
-          <img src={logoClaria} alt="Logo Clariá" /> {/* */}
+          <img src={logoClaria} alt={t('heroLogoAlt')} />
         </div>
         <p className={styles['hero-description']}>
-          Cantora, compositora e atriz brasileira, Clariá traz a força do pop e da MPB em uma fusão de liberdade, sofisticação e energia artística. Prepare-se para uma experiência musical inesquecível. {/* */}
+          {t('heroDescription')} 
         </p>
         <button
           onClick={() => scrollToSection('musica')}
           className={`${styles.btn} ${styles['primary-btn']}`}
         >
-          Descubra Minha Música {/* */}
+          {t('heroButton')} 
         </button>
       </div>
       <div className={styles['hero-image']}>
-        <img src={clariaDestaque} alt="Clariá em destaque com efeitos de luz neon" /> {/* */}
+        <img src={clariaDestaque} alt={t('heroImageAlt')} />
       </div>
     </section>
   );

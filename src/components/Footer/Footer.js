@@ -1,13 +1,16 @@
 // src/components/Footer/Footer.js
 import React from 'react';
-import styles from './Footer.module.css'; // Importa o CSS Module
+import { useTranslation } from 'react-i18next'; // Importe o hook useTranslation
+import styles from './Footer.module.css';
 
 function Footer() {
+  const { t } = useTranslation(); // Inicialize o hook para acessar as traduções
+
   return (
     <footer className={styles['main-footer']}>
-      <div className="container"> {/* O container é global, então não usa styles.container aqui */}
-        <p>© 2025 Clariá. Todos os direitos reservados.</p> {/* */}
-        <p>Desenvolvido por Matheus Leandro com apoio de Maria Carolina Bastos</p> {/* */}
+      <div className="container">
+        <p>{t('footerRights')}</p> {/* Traduzindo o texto de direitos autorais */}
+        <p>{t('footerDevelopedBy', { year: "2025", developer1: "Matheus Leandro", developer2: "Maria Carolina Bastos" })}</p> 
       </div>
     </footer>
   );
