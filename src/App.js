@@ -8,7 +8,7 @@ import Theater from './components/Theater/Theater';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
-// import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher'; // REMOVA esta linha
+import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -67,7 +67,7 @@ function App() {
         <Contact id="contato" />
       </main>
       <WhatsAppButton />
-      {/* <LanguageSwitcher /> - Este componente não será mais renderizado aqui */}
+      <LanguageSwitcher />
       <Footer />
     </>
   );
