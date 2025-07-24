@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
@@ -12,6 +13,8 @@ import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
+  // 1. Adicionar estado para verificar se é mobile
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 992); // Defina seu breakpoint aqui
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -32,11 +35,19 @@ function App() {
       setActiveSection(current);
     };
 
+    // Adicionar listener para redimensionamento para atualizar isMobile
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 992); // Mantenha o breakpoint consistente
+    };
+
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize); // Adiciona o listener de resize
     handleScroll(); // Chamar uma vez ao carregar para definir a seção inicial
+    handleResize(); // Chamar uma vez ao carregar para definir o estado inicial do mobile
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize); // Remove o listener de resize
     };
   }, []);
 
@@ -44,7 +55,6 @@ function App() {
     const targetSection = document.getElementById(id);
     if (targetSection) {
       const headerOffset = 80; // Compensar o header fixo
-      // Calculando a posição para scrollar
       const elementPosition = targetSection.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
 
@@ -62,11 +72,12 @@ function App() {
         <Hero id="hero" scrollToSection={scrollToSection} />
         <About id="sobre" />
         <Music id="musica" />
-        <Philosophy id="filosofia" />
+        <Philosophy id="filosofia" /> {/* Certifique-se que o ID 'filosofia' está correto se for diferente de 'philosophy' */}
         <Theater id="teatro" />
         <Contact id="contato" />
       </main>
-      <WhatsAppButton />
+      {/* 2. Passe as props activeSection e isMobile para o WhatsAppButton */}
+      <WhatsAppButton activeSection={activeSection} isMobile={isMobile} />
       <LanguageSwitcher />
       <Footer />
     </>

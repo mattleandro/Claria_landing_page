@@ -1,7 +1,9 @@
+// src/components/WhatsAppButton/WhatsAppButton.js
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './WhatsAppButton.module.css';
 
-function WhatsAppButton() {
+// Receba as props activeSection e isMobile
+function WhatsAppButton({ activeSection, isMobile }) {
   const [showMessageBox, setShowMessageBox] = useState(false);
   const messageBoxTimeoutRef = useRef(null);
   const buttonRef = useRef(null);
@@ -17,13 +19,13 @@ function WhatsAppButton() {
   const handleMouseLeave = () => {
     messageBoxTimeoutRef.current = setTimeout(() => {
       setShowMessageBox(false);
-    }, 120000);
+    }, 120000); // 2 minutos
   };
 
   const sendWhatsAppMessage = () => {
     const message = document.getElementById('whatsapp-message').value;
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = '5521995067999';
+    const phoneNumber = '5521995067999'; // Seu número de telefone
     window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
     setShowMessageBox(false);
   };
@@ -52,6 +54,16 @@ function WhatsAppButton() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [showMessageBox]);
+
+  // Lógica de renderização condicional
+  // O botão NÃO aparece se:
+  // 1. For um dispositivo mobile (isMobile é true) E
+  // 2. A seção ativa for 'hero' (activeSection é 'hero')
+  const shouldShowButton = !(isMobile && activeSection === 'hero');
+
+  if (!shouldShowButton) {
+    return null; // Não renderiza o componente
+  }
 
   return (
     <>
