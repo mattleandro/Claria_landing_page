@@ -19,7 +19,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1000000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -103,7 +103,7 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  z-index: 1001;
+  z-index: 10010000;
   position: relative;
   width: 40px;
   height: 30px;
@@ -181,7 +181,7 @@
     background-color: var(--color-dark-blue);
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
     transition: right 0.4s ease-in-out; /* Animação de deslizamento */
-    z-index: 999; /* Abaixo do botão do hambúrguer, mas acima do conteúdo */
+    z-index: 10000; /* Abaixo do botão do hambúrguer, mas acima do conteúdo */
 
     /* Flexbox para o conteúdo do menu lateral */
     display: flex; /* Revertido para flexbox aqui quando ativo */
