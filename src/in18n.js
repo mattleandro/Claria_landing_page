@@ -12,6 +12,10 @@ const resources = {
       "navContact": "Contato",
       "translateToEnglish": "English",
       "translateToPortuguese": "Português",
+      "translateToEnglish": "English",
+      "translateToPortuguese": "Português",
+      "translateToPortugueseShort": "PT", 
+      "translateToEnglishShort": "EN",  
 
       // --- Traduções para o Componente About ---
       "aboutSectionTitle": "Uma Artista Multifacetada",
@@ -91,6 +95,11 @@ const resources = {
       "navContact": "Contact",
       "translateToEnglish": "English",
       "translateToPortuguese": "Portuguese",
+      
+      "translateToEnglish": "English",
+      "translateToPortuguese": "Portuguese",
+      "translateToPortugueseShort": "Portuguese", 
+      "translateToEnglishShort": "English",
 
       // --- Traduções para o Componente About (em Inglês) ---
       "aboutSectionTitle": "A Multifaceted Artist",

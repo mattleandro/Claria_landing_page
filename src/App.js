@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
@@ -9,21 +8,26 @@ import Theater from './components/Theater/Theater';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
+import LanguageSwitcher from './components/LanguageSwitcher/LanguageSwitcher'; // Importe o novo componente
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
-    const sections = document.querySelectorAll('main section[id]');
+    // Certifique-se de que 'main section[id]' está correto com a sua estrutura HTML
+    // Se suas seções não estiverem dentro de um <main> elas não serão detectadas.
+    const sections = document.querySelectorAll('section[id]');
     const headerOffset = 80; // Compensar o header fixo
 
     const handleScroll = () => {
       let current = '';
+      const scrollY = window.scrollY;
+
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
 
-        if (window.scrollY >= sectionTop - headerOffset && window.scrollY < sectionTop + sectionHeight - headerOffset) {
+        if (scrollY >= sectionTop - headerOffset && scrollY < sectionTop + sectionHeight - headerOffset) {
           current = section.getAttribute('id');
         }
       });
@@ -42,6 +46,7 @@ function App() {
     const targetSection = document.getElementById(id);
     if (targetSection) {
       const headerOffset = 80; // Compensar o header fixo
+      // Calculando a posição para scrollar
       const elementPosition = targetSection.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
 
@@ -64,6 +69,7 @@ function App() {
         <Contact id="contato" />
       </main>
       <WhatsAppButton />
+      <LanguageSwitcher />
       <Footer />
     </>
   );
