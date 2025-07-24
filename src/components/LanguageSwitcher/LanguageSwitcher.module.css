@@ -65,7 +65,7 @@
 /* Media query para dispositivos móveis */
 @media (max-width: 768px) {
   .language-switcher {
-    bottom: 700px; /* Ajuste para o mobile, para não colidir com o botão do WhatsApp */
+    bottom: 550px; /* Ajuste para o mobile, para não colidir com o botão do WhatsApp */
     right: 15px; /* Ajuste para o mobile */
     flex-direction: column; /* Manter coluna no mobile */
     gap: 5px;
