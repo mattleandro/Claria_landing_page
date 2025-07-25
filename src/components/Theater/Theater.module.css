@@ -34,9 +34,9 @@
     margin-bottom: 4rem;
 }
 
-.music-item { /* Reutiliza o estilo de item da seção de música */
+.music-item { 
     background-color: rgba(255, 255, 255, 0.05);
-    padding: 2rem;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
