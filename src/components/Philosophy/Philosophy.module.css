@@ -3,9 +3,17 @@
 .philosophy-section {
     background-color: var(--color-dark-blue);
     border-radius: 10px;
+    opacity: 0; /* Começa invisível */
+    transform: translateX(-50px); /* Começa 50px para a esquerda */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* Transição suave para opacidade e posição */
 }
 
-.section-title { 
+.philosophy-section.visible {
+    opacity: 1; /* Torna-se totalmente visível */
+    transform: translateX(0); /* Move para a posição original */
+}
+
+.section-title {
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
@@ -38,11 +46,37 @@
     flex: 2;
 }
 
-.philosophy-text p {
+/* Aplica a transição aos parágrafos e quote dentro de philosophy-text */
+.philosophy-text p,
+.quote {
     margin-bottom: 1rem;
     font-size: 1.05rem;
     color: rgba(245, 245, 245, 0.85);
+    opacity: 0; /* Começa invisível */
+    transform: translateX(-30px); /* Começa um pouco para a esquerda */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transição para o texto */
 }
+
+/* Delay para cada elemento de texto */
+.philosophy-section.visible .philosophy-text p:nth-child(1) {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.2s; /* Atraso para o primeiro parágrafo */
+}
+
+.philosophy-section.visible .philosophy-text p:nth-child(2) { /* Ajuste se houver mais de um p antes da citação */
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.4s; /* Atraso para o segundo parágrafo (se houver) */
+}
+
+
+.philosophy-section.visible .quote {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.6s; /* Atraso para a citação */
+}
+
 
 .quote {
     font-family: var(--font-heading-primary);

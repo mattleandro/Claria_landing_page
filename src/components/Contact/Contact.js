@@ -1,11 +1,12 @@
 // src/components/Contact/Contact.js
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next'; // Importe o hook useTranslation
+import { useTranslation } from 'react-i18next';
+import emailjs from '@emailjs/browser';
 import styles from './Contact.module.css';
 import '../../index.css';
 
 function Contact({ id }) {
-  const { t } = useTranslation(); // Inicialize o hook para acessar as traduções
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -13,17 +14,45 @@ function Contact({ id }) {
     message: ''
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Formulário enviado:', formData);
-    // Use a tradução para o alert
-    alert(t('contactFormSuccess'));
-    setFormData({ name: '', email: '', message: '' }); // Limpa o formulário
+
+    setIsLoading(true); // Ativa o loader
+    setSuccessMessage(''); // Limpa mensagens anteriores
+    setErrorMessage('');
+
+    const serviceID = 'service_cckvbvv';
+    const templateID = 'template_jc4c8cm';
+    const publicKey = 'D7PKtEkCSaLAnbkJV';
+
+    const dataToSend = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      title: 'Nova mensagem de contato do site',
+      time: new Date().toLocaleString('pt-BR', { timeZoneName: 'short' })
+    };
+
+    try {
+      await emailjs.send(serviceID, templateID, dataToSend, publicKey);
+      setSuccessMessage(t('contactFormSuccess')); // Usa a chave de tradução
+      setFormData({ name: '', email: '', message: '' }); // Limpa o formulário
+    } catch (error) {
+      console.error('Erro ao enviar e-mail:', error);
+      setErrorMessage(t('contactFormError')); // Usa a chave de tradução
+    } finally {
+      setIsLoading(false); // Desativa o loader
+    }
   };
 
   return (
@@ -33,22 +62,28 @@ function Contact({ id }) {
       <form className={styles['contact-form']} onSubmit={handleSubmit}>
         <div className={styles['form-group']}>
           <label htmlFor="name">{t('contactNameLabel')}:</label>
-          <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} />
+          <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} disabled={isLoading} />
         </div>
         <div className={styles['form-group']}>
           <label htmlFor="email">{t('contactEmailLabel')}:</label>
-          <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} />
+          <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} disabled={isLoading} />
         </div>
         <div className={styles['form-group']}>
           <label htmlFor="message">{t('contactMessageLabel')}:</label>
-          <textarea id="message" name="message" rows="5" required placeholder={t('contactMessagePlaceholder')} value={formData.message} onChange={handleChange}></textarea>
+          <textarea id="message" name="message" rows="5" required placeholder={t('contactMessagePlaceholder')} value={formData.message} onChange={handleChange} disabled={isLoading}></textarea>
         </div>
-        <button type="submit" className={styles['primary-btn']}>
-          {t('contactSubmitButton')}
+        <button type="submit" className={styles['primary-btn']} disabled={isLoading}>
+          {isLoading ? (
+            <div className={styles['spinner']}></div> // Loader
+          ) : (
+            t('contactSubmitButton')
+          )}
         </button>
-      </form>
 
-      <div className={styles['social-links']}>
+        {successMessage && <p className={styles['success-message']}>{successMessage}</p>}
+        {errorMessage && <p className={styles['error-message']}>{errorMessage}</p>}
+      </form>
+          <div className={styles['social-links']}>
         <p>{t('contactFollowUs')}:</p>
         {/* Instagram Icon */}
         <a href="https://www.instagram.com/aclariclaria" target="_blank" rel="noopener noreferrer" className={styles['icon-item']} aria-label={t('contactInstagramAria')}>
@@ -62,7 +97,7 @@ function Contact({ id }) {
         {/* TikTok Icon */}
         <a href="https://www.tiktok.com/@aclariclaria" target="_blank" rel="noopener noreferrer" className={styles['icon-item']} aria-label={t('contactTiktokAria')}>
           <div className={styles['icon-wrapper']}>
-            <svg viewBox="0 0 24 24" className={styles['social-icon']}>
+            <svg viewBox="0 0 24 24" className={styles['social-icon']} >
               <path d="M12.75 2c1.25 0 2.437.53 3.25 1.437.49.531.916 1.168 1.531 1.437.645.285 1.418.392 2.469.392v2.344c-1.323 0-2.363-.176-3.25-.5v7.39c0 3.605-2.385 6.75-6.125 6.75-2.156 0-4.063-1.27-4.875-3.187-.25-.583-.437-1.25-.437-2.031 0-2.584 2.01-4.625 4.625-4.625.458 0 .916.083 1.344.25v2.407c-.406-.156-.833-.25-1.344-.25-1.208 0-2.25 1.063-2.25 2.438 0 .573.125 1.031.281 1.375.438.99 1.49 1.687 2.594 1.687 2.167 0 3.625-1.833 3.625-3.938v-9.719c-.771-.104-1.479-.458-2.063-1-.698-.657-1.135-1.531-1.219-2.563h2.469z" />
             </svg>
           </div>
@@ -105,6 +140,7 @@ function Contact({ id }) {
           <span className={styles['icon-label']}>{t('contactHyperdditLabel')}</span>
         </a>
       </div>
+      
     </section>
   );
 }

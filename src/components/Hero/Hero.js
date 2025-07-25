@@ -11,6 +11,9 @@ function Hero({ id, scrollToSection }) {
   return (
     <section id={id} className={styles['hero-section']}>
       <div className={styles['hero-content']}>
+        <div className={styles['hero-logo-wrapper']}>
+          <img src={logoClaria} alt={t('heroLogoAlt')} />
+        </div>
         {/* Adicionei uma div para envolver a descrição e o botão */}
         <div className={styles['hero-text-and-button']}>
           <p className={styles['hero-description']}>
@@ -24,9 +27,7 @@ function Hero({ id, scrollToSection }) {
           </button>
         </div>
         {/* A logo agora está em sua própria div para reordenação */}
-        <div className={styles['hero-logo-wrapper']}>
-          <img src={logoClaria} alt={t('heroLogoAlt')} />
-        </div>
+        
       </div>
       <div className={styles['hero-image']}>
         <img src={clariaDestaque} alt={t('heroImageAlt')} />

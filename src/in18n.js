@@ -14,16 +14,18 @@ const resources = {
       "translateToPortuguese": "Português",
       "translateToEnglish": "English",
       "translateToPortuguese": "Português",
-      "translateToPortugueseShort": "PT", 
-      "translateToEnglishShort": "EN",  
+      "translateToPortugueseShort": "PT",
+      "translateToEnglishShort": "EN",
 
       // --- Traduções para o Componente About ---
       "aboutSectionTitle": "Uma Artista Multifacetada",
-      "aboutHighlightText": "Clarissa Chaves é carioca, cantora, compositora e atriz.",
+      "searchClarissaChaves": "Clique para pesquisar Clarissa Chaves no Google", // Nova chave para o tooltip do ícone
+      "aboutHighlightTextSuffix": "é carioca, cantora, compositora e atriz.", // Nova chave com o restante da frase
       "aboutParagraph1": "Mas, desde muito cedo, entrou no mundo das artes, fazendo teatro e cantando, inclusive no Beco das Garrafas, em um projeto de Bossa/MPB. No repertório, MPB, pop e R&B, tendo como principais influências nomes como Gal Costa, Clara Nunes, Djavan, Elis, Marisa Monte, Rihanna, Beyoncé, Ariana Grande e Amy Winehouse, além de suas composições, que a colocam como a nova promessa da música brasileira.",
       "aboutParagraph2": "Clarissa faz sua preparação vocal com a também cantora e compositora da MPB, Andréia Pedroso, criadora do 'Cheia de Bossa', Mestre em Educação Musical pela Escola de Música da UFRJ, Curadora do projeto Preparavoz - Oficina de Canto - realizada no Centro da Música Carioca Artur do Távola.",
       "aboutParagraph3": "Sua fonoaudióloga é a Dra. Cristiane Magacho, precursora em dermatoglifia no Brasil. Além disso, sua carreira tem planejamento de Anita Carvalho (Music Rio Academy), Marina Mattoso (Agência Jangada) e Roberta Senna (Ovo Branding).",
       "aboutImageAlt": "Clariá - imagem {{index}}",
+
 
       // --- Traduções para o Componente Hero ---
       "heroLogoAlt": "Logo Clariá",
@@ -77,6 +79,7 @@ const resources = {
       "contactSpotifyLabel": "Spotify",
       "contactHyperdditAria": "Hyperddit da Clariá",
       "contactHyperdditLabel": "Hyperddit",
+      "contactFormError": "Erro ao enviar mensagem. Tente novamente mais tarde.",
 
       // --- Traduções para o Componente Footer ---
       "footerRights": "© 2025 Clariá. Todos os direitos reservados.",
@@ -95,10 +98,10 @@ const resources = {
       "navContact": "Contact",
       "translateToEnglish": "English",
       "translateToPortuguese": "Portuguese",
-      
+
       "translateToEnglish": "English",
       "translateToPortuguese": "Portuguese",
-      "translateToPortugueseShort": "Portuguese", 
+      "translateToPortugueseShort": "Portuguese",
       "translateToEnglishShort": "English",
 
       // --- Traduções para o Componente About (em Inglês) ---

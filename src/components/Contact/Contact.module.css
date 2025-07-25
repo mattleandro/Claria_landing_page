@@ -79,11 +79,12 @@ textarea::placeholder {
 }
 
 /* --- ESTILOS DO BOTÃO 'ENVIAR MENSAGEM' (PRIMARY BUTTON) --- */
-/* Esta classe agora contém todas as propriedades necessárias para o botão */
 .primary-btn {
-    display: inline-block;
-    padding: 1rem 3rem; /* Ajuste o padding se desejar */
-    border-radius: 25px; /* <--- AQUI! Este valor controla o arredondamento */
+    display: inline-flex; /* Alterado para flex para centralizar o spinner */
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 3rem;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
@@ -91,21 +92,56 @@ textarea::placeholder {
     text-decoration: none;
     transition: all 0.3s ease;
     white-space: nowrap;
-    border: none; /* Garante que não haja bordas padrão */
-    outline: none; /* Remove o contorno de foco padrão */
-    
-    /* Propriedades específicas do botão primário */
+    border: none;
+    outline: none;
     background: linear-gradient(45deg, var(--color-accent-purple), var(--color-deep-indigo));
     color: var(--color-light-text);
     box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
-    width: auto; /* Pode ser específico para o formulário */
+    width: auto;
+    min-width: 150px; /* Garante um tamanho mínimo para o botão com o spinner */
 }
 
-.primary-btn:hover {
+.primary-btn:hover:not(:disabled) { /* Adicionado :not(:disabled) para hover */
     background: linear-gradient(45deg, var(--color-cyan), var(--color-magenta));
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0, 188, 212, 0.6);
 }
+
+.primary-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Loader Spinner */
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--color-light-text); /* Cor do spinner */
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mensagens de Feedback */
+.success-message {
+    margin-top: 1.5rem;
+    color: var(--color-cyan); /* Cor verde para sucesso, ajuste conforme sua paleta */
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.error-message {
+    margin-top: 1.5rem;
+    color: #ff6b6b; /* Cor vermelha para erro */
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
 
 /* Estilos para os Ícones de Redes Sociais */
 .social-links {
@@ -113,7 +149,7 @@ textarea::placeholder {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem; /* Espaçamento entre os ícones */
+    gap: 2rem;
 }
 
 .social-links p {
@@ -160,12 +196,12 @@ textarea::placeholder {
 .icon-wrapper svg {
     width: 60%;
     height: 60%;
-    fill: var(--color-light-text); /* Cor padrão dos ícones */
+    fill: var(--color-light-text);
     transition: fill 0.3s ease;
 }
 
 .icon-item:hover .icon-wrapper svg {
-    fill: var(--color-light-text); /* Garante que a cor não mude ao hover se já for light-text */
+    fill: var(--color-light-text);
 }
 
 .icon-label {
@@ -175,7 +211,6 @@ textarea::placeholder {
     text-transform: capitalize;
 }
 
-/* Classe geral para o preenchimento de SVGs de ícones sociais */
 .social-icon {
     fill: var(--color-light-text);
 }
@@ -211,7 +246,7 @@ textarea::placeholder {
         padding: 1.5rem;
     }
     .primary-btn {
-        width: 100%; /* Botão ocupa a largura total em telas pequenas */
+        width: 100%;
         padding: 0.8rem 1.5rem;
     }
 }

@@ -72,11 +72,10 @@ function App() {
         <Hero id="hero" scrollToSection={scrollToSection} />
         <About id="sobre" />
         <Music id="musica" />
-        <Philosophy id="filosofia" /> {/* Certifique-se que o ID 'filosofia' está correto se for diferente de 'philosophy' */}
+        <Philosophy id="filosofia" />
         <Theater id="teatro" />
         <Contact id="contato" />
       </main>
-      {/* 2. Passe as props activeSection e isMobile para o WhatsAppButton */}
       <WhatsAppButton activeSection={activeSection} isMobile={isMobile} />
       <LanguageSwitcher />
       <Footer />
