@@ -23,7 +23,7 @@ const resources = {
       "aboutHighlightTextSuffix": "é carioca, cantora, compositora e atriz.", // Nova chave com o restante da frase
       "aboutParagraph1": "Mas, desde muito cedo, entrou no mundo das artes, fazendo teatro e cantando, inclusive no Beco das Garrafas, em um projeto de Bossa/MPB. No repertório, MPB, pop e R&B, tendo como principais influências nomes como Gal Costa, Clara Nunes, Djavan, Elis, Marisa Monte, Rihanna, Beyoncé, Ariana Grande e Amy Winehouse, além de suas composições, que a colocam como a nova promessa da música brasileira.",
       "aboutParagraph2": "Clarissa faz sua preparação vocal com a também cantora e compositora da MPB, Andréia Pedroso, criadora do 'Cheia de Bossa', Mestre em Educação Musical pela Escola de Música da UFRJ, Curadora do projeto Preparavoz - Oficina de Canto - realizada no Centro da Música Carioca Artur do Távola.",
-      "aboutParagraph3": "Sua fonoaudióloga é a Dra. Cristiane Magacho, precursora em dermatoglifia no Brasil. Além disso, sua carreira tem planejamento de Anita Carvalho (Music Rio Academy), Marina Mattoso (Agência Jangada) e Roberta Senna (Ovo Branding).",
+      "aboutParagraph3": "Sua fonoaudióloga foi a Dra. Cristiane Magacho, precursora em dermatoglifia no Brasil., até junho de 25, mas por motivos profissionais, Cris não pode continuar. Agora, está com a incrível Luisa Catoira, Além disso, sua carreira tem planejamento de Anita Carvalho (Music Rio Academy), Marina Mattoso (Agência Jangada) e Roberta Senna (Ovo Branding).",
       "aboutImageAlt": "Clariá - imagem {{index}}",
 
 
@@ -77,8 +77,8 @@ const resources = {
       "contactYoutubeLabel": "Youtube",
       "contactSpotifyAria": "Spotify da Clariá",
       "contactSpotifyLabel": "Spotify",
-      "contactHyperdditAria": "Hyperddit da Clariá",
-      "contactHyperdditLabel": "Hyperddit",
+      "contactHyperdditAria": "Hypeddit da Clariá",
+      "contactHyperdditLabel": "Hypeddit",
       "contactFormError": "Erro ao enviar mensagem. Tente novamente mais tarde.",
 
       // --- Traduções para o Componente Footer ---
@@ -109,7 +109,7 @@ const resources = {
       "aboutHighlightText": "Clarissa Chaves is from Rio de Janeiro, a singer, songwriter, and actress.",
       "aboutParagraph1": "But from a very young age, she entered the world of arts, doing theater and singing, including at Beco das Garrafas, in a Bossa/MPB project. Her repertoire includes MPB, pop, and R&B, with main influences such as Gal Costa, Clara Nunes, Djavan, Elis, Marisa Monte, Rihanna, Beyoncé, Ariana Grande, and Amy Winehouse, in addition to her compositions, which position her as the new promise of Brazilian music.",
       "aboutParagraph2": "Clarissa prepares her vocals with fellow MPB singer and songwriter, Andréia Pedroso, creator of 'Cheia de Bossa', Master in Music Education from UFRJ's School of Music, Curator of the Preparavoz project - Singing Workshop - held at the Artur do Távola Carioca Music Center.",
-      "aboutParagraph3": "Her speech therapist is Dr. Cristiane Magacho, a pioneer in dermatoglyphics in Brazil. Furthermore, her career planning is handled by Anita Carvalho (Music Rio Academy), Marina Mattoso (Agência Jangada), and Roberta Senna (Ovo Branding).",
+      "aboutParagraph3": "Her speech therapist was Dr. Cristiane Magacho, a pioneer in dermatoglyphics in Brazil, until June 25, but for professional reasons, Cris was unable to continue. In addition, her career has been planned by Anita Carvalho (Music Rio Academy), Marina Mattoso (Agência Jangada) and Roberta Senna (Ovo Branding).",
       "aboutImageAlt": "Clariá - image {{index}}",
 
       // --- Traduções para o Componente Hero (em Inglês) ---
@@ -162,8 +162,8 @@ const resources = {
       "contactYoutubeLabel": "Youtube",
       "contactSpotifyAria": "Clariá's Spotify",
       "contactSpotifyLabel": "Spotify",
-      "contactHyperdditAria": "Clariá's Hyperddit",
-      "contactHyperdditLabel": "Hyperddit",
+      "contactHyperdditAria": "Clariá's Hypeddit",
+      "contactHyperdditLabel": "Hypeddit",
 
       // --- Traduções para o Componente Footer ---
       "footerRights": "© 2025 Clariá. All rights reserved.",

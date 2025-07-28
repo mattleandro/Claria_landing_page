@@ -1,19 +1,8 @@
 /* src/components/Header/Header.module.css */
 
-/* --- Variáveis (apenas para referência, devem vir de um arquivo global) --- */
-/* :root {
-    --color-deep-indigo: #2c005b;
-    --color-dark-blue: #0a0a1a;
-    --color-accent-purple: #8a2be2;
-    --color-cyan: #00ffff;
-    --color-light-text: #f5f5f5;
-    --font-heading-secondary: 'Montserrat', sans-serif;
-}
-*/
-
 /* --- Estilos Gerais do Header --- */
 .main-header {
-  background-color: rgba(10, 10, 26, 0.637); /* Fundo semi-transparente */
+  background-color: rgba(10, 10, 26, 0.637);
   padding: 1.5rem 0;
   position: fixed;
   width: 100%;
@@ -25,38 +14,39 @@
 
 .container {
   display: flex;
-  justify-content: space-between; /* Espaço entre logo e navegação/hambúrguer */
-  align-items: center; /* Alinha verticalmente no centro */
+  justify-content: space-between;
+  align-items: center;
   padding: 0 1rem;
-  max-width: 1200px; /* Limite a largura do container para desktop */
-  margin: 0 auto; /* Centraliza o container */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo img {
-  height: 60px; /* Tamanho do logo no cabeçalho */
+  height: 60px;
   width: auto;
   vertical-align: middle;
-  padding-left: 250px; /* Mantém o padding para desktop */
+  padding-left: 250px;
 }
 
 /* --- Navegação Principal (Desktop) --- */
 .main-nav {
-  display: flex; /* Flexbox para desktop */
-  flex-grow: 1; /* Permite que ocupe o espaço restante */
-  justify-content: flex-end; /* Alinha os itens da lista à direita */
-  align-items: center; /* Alinha os itens da lista verticalmente */
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2.5rem; /* Adicionado GAP para espaçar a lista (ul) e o switcher */
 }
 
 .nav-list {
   list-style: none;
-  display: flex; /* Flexbox para os itens da lista */
-  gap: 2rem; /* Espaçamento entre os itens */
-  margin: 0; /* Remove margin padrão de ul */
-  padding: 0; /* Remove padding padrão de ul */
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-list li {
-  flex-shrink: 0; /* Impede que os itens encolham em desktop */
+  flex-shrink: 0;
 }
 
 .nav-list--item {
@@ -98,7 +88,7 @@
 
 /* --- Menu Hambúrguer (Desktop: Escondido) --- */
 .hamburger-button {
-  display: none; /* <--- Mudei para 'none' aqui */
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
@@ -121,131 +111,114 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Animação do X quando o menu está aberto */
 .hamburger-button.open .hamburger-bar:nth-child(1) {
   transform: translateY(12px) rotate(45deg);
 }
-
 .hamburger-button.open .hamburger-bar:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger-button.open .hamburger-bar:nth-child(3) {
   transform: translateY(-12px) rotate(-45deg);
 }
 
-/* Estilo para o item que contém o LanguageSwitcher dentro do header no mobile */
+/* Estilo para o item que contém o LanguageSwitcher no menu mobile */
 .language-switcher-mobile-item {
-  width: 100%; /* Garante que o item ocupe a largura total para centralização */
-  display: flex; /* Usa flexbox para centralizar o LanguageSwitcher */
-  justify-content: center; /* Centraliza o LanguageSwitcher horizontalmente */
-  margin-top: 1.5rem; /* Espaçamento do topo */
-  padding-bottom: 1rem; /* Espaçamento inferior */
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória sutil */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1.5rem;
 }
-
 
 /* --- Media Queries para Mobile (Layout Hambúrguer) --- */
 @media (max-width: 992px) {
   .container {
     padding: 0 1rem;
-    /* Adicionado para centralizar o logo no container */
-    justify-content: center; /* Centraliza horizontalmente os itens no container */
-    position: relative; /* Necessário para posicionar o botão do hambúrguer */
+    justify-content: center;
+    position: relative;
   }
-
 
   .logo {
-    /* Adicionado para centralizar a imagem do logo dentro do seu próprio elemento */
-    flex-grow: 1; /* Permite que o logo ocupe o espaço disponível */
-    display: flex; /* Transforma o logo em um container flexível */
-    justify-content: center; /* Centraliza a imagem do logo horizontalmente */
-    padding-left: 0; /* Remove o padding esquerdo específico para desktop */
-  }
-  
-  .logo img {
-    height: 50px; /* Tamanho da logo para mobile */
-    padding-left: 0; /* Remove o padding esquerdo em mobile */
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
   }
 
-  /* Navegação Principal no Mobile (quando menu hambúrguer ativo) */
+  .logo img {
+    height: 50px;
+    padding-left: 0;
+  }
+
   .main-nav {
-    display: none; /* Esconde a navegação no estado padrão (menu fechado) */
-    /* Configuração do menu lateral */
+    gap: 0; /* Reseta o gap para o menu mobile */
     position: fixed;
-    top: 0; /* Começa do topo da viewport */
-    right: -100%; /* Escondido fora da tela à direita */
-    width: 70%; /* Largura do menu quando aberto */
-    height: 100vh; /* Altura total da viewport */
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
     background-color: var(--color-dark-blue);
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    transition: right 0.4s ease-in-out; /* Animação de deslizamento */
-    z-index: 10000; /* Abaixo do botão do hambúrguer, mas acima do conteúdo */
-
-    /* Flexbox para o conteúdo do menu lateral */
-    display: flex; /* Revertido para flexbox aqui quando ativo */
-    flex-direction: column; /* Itens da navegação em coluna */
-    justify-content: flex-start; /* Alinha os itens ao topo */
-    align-items: center; /* Centraliza os itens horizontalmente */
-    padding-top: 50px; /* Adiciona um padding no topo para afastar do limite superior */
+    transition: right 0.4s ease-in-out;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
   }
 
-  /* Estado Aberto do Menu Lateral */
   .main-nav--open {
-    right: 0; /* Desliza para a tela */
+    right: 0;
   }
 
-  /* Lista de Navegação no Mobile */
   .nav-list {
-    flex-direction: column; /* Itens da lista em coluna */
-    gap: 1.5rem; /* Espaçamento maior entre itens no menu mobile */
-    width: 100%; /* Ocupa a largura total do menu */
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
     text-align: center;
-    padding: 0; /* Garante que não há padding no UL */
-    margin: 0; /* Garante que não há margin no UL */
+    padding: 0;
+    margin: 0;
   }
 
   .nav-list li {
-    width: 100%; /* Cada item ocupa a largura total para cliques fáceis */
+    width: 100%;
   }
 
   .nav-list--item {
     font-size: 1.2rem;
-    padding: 1rem 0; /* Mais padding vertical para cliques fáceis */
-    display: block; /* Ocupa a largura total para facilitar o clique */
+    padding: 1rem 0;
+    display: block;
   }
 
   .nav-list--item::after {
-    left: 50%; /* Centraliza a linha inferior */
+    left: 50%;
     transform: translateX(-50%);
   }
 
   .nav-list--item:hover::after,
   .nav-list--item.active::after {
-    width: 80%; /* Linha ativa menor e centralizada para mobile */
+    width: 80%;
   }
 
-  /* Exibe o botão de hambúrguer no mobile */
   .hamburger-button {
-    display: flex; /* Torna o botão visível no mobile */
+    display: flex;
   }
 }
 
-/* --- Media Queries para Telas Menores (Ajustes Finais) --- */
+/* --- Media Queries para Telas Menores --- */
 @media (max-width: 600px) {
   .logo img {
-    height: 45px; /* Logo ainda menor para telas muito pequenas */
+    height: 45px;
   }
-
   .main-nav {
-    width: 85%; /* Menu um pouco mais largo em telas muito pequenas */
+    width: 85%;
   }
-
   .nav-list {
     gap: 1rem;
   }
-
   .nav-list--item {
     font-size: 1.1rem;
   }

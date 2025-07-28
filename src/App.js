@@ -77,7 +77,6 @@ function App() {
         <Contact id="contato" />
       </main>
       <WhatsAppButton activeSection={activeSection} isMobile={isMobile} />
-      <LanguageSwitcher />
       <Footer />
     </>
   );
