@@ -5,6 +5,7 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   pt: {
     translation: {
+      "searchClariaGoogle": "Pesquisar Clarissa Chaves Clariá no Google",
       "navHome": "Início",
       "navAbout": "Sobre",
       "navMusic": "Música",
@@ -91,6 +92,7 @@ const resources = {
   },
   en: {
     translation: {
+      "searchClariaGoogle": "Search Clarissa Chaves Clariá on Google",
       "navHome": "Home",
       "navAbout": "About",
       "navMusic": "Music",

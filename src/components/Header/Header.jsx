@@ -51,7 +51,16 @@ function Header({ activeSection, scrollToSection }) {
       <div className={styles.container}>
         {/* Adiciona as classes 'popup' e 'show-on-load-header' condicionalmente */}
         <div className={`${styles.logo} ${styles.popup} ${isMobile && showHeaderLogoTooltip ? styles['show-on-load-header'] : ''}`}>
-          <img src={logoClaria} alt="Logo Clariá" />
+          {/* INÍCIO DA ALTERAÇÃO */}
+          <a
+            href="https://www.google.com/search?q=Clarissa+Chaves+Clari%C3%A1"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t('searchClariaGoogle')} // Adicionado para acessibilidade
+          >
+            <img src={logoClaria} alt="Logo Clariá" />
+          </a>
+          {/* FIM DA ALTERAÇÃO */}
         </div>
 
         <button
