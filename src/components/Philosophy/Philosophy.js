@@ -20,7 +20,7 @@ function Philosophy({ id }) {
         });
       },
       {
-        threshold: 0.3, // A seção se torna visível quando 30% dela está na viewport
+        threshold: 0.3, 
       }
     );
 
@@ -40,7 +40,7 @@ function Philosophy({ id }) {
       id={id}
       ref={sectionRef} // Atribua a ref à seção
       className={`container ${styles['philosophy-section']} ${
-        isVisible ? styles.visible : '' // Adicione a classe 'visible' quando isVisible for true
+        isVisible ? styles.visible : '' 
       }`}
     >
       <h3 className={styles['section-title']}>{t('philosophySectionTitle')}</h3>

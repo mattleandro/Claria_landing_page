@@ -2,49 +2,101 @@
 
 .hero-section {
     display: flex;
-    flex-direction: row; /* Padrão desktop: imagem ao lado do texto */
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Ocupa a altura total da viewport */
-    padding-top: 80px; /* Compensar o header fixo */
+    min-height: 100vh;
+    padding-top: 80px;
     background: linear-gradient(135deg, var(--color-deep-indigo) 0%, var(--color-dark-blue) 100%);
     position: relative;
-    overflow: hidden; /* Para garantir que a imagem não vaze */
+    overflow: hidden;
 }
 
 .hero-content {
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    max-width: 600px; /* Limita a largura do texto */
+    max-width: 600px;
     text-align: center;
-    align-items: center; /* Centraliza o conteúdo (logo, texto, botão) */
+    align-items: center;
     margin-left: 200px;
 }
 
-.hero-logo-wrapper { /* Novo wrapper para a logo */
-    margin-bottom: 100px; /* Mantido o espaçamento inferior para o logo na hero */
-    display: flex; /* Para centralizar a imagem dentro dele */
+.hero-logo-wrapper {
+    margin-bottom: 100px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Garante que o wrapper ocupa a largura total para centralização */
+    width: 100%;
+    position: relative;
 }
 
+/* ========= EFEITOS NA IMAGEM (ativos em todas as versões) ========= */
 .hero-logo-wrapper img {
     width: auto;
-    max-width: 100%; /* Garante que a imagem não transborde em telas menores */
+    max-width: 100%;
     height: auto;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
 }
 
-/* Removemos .hero-title, pois agora a imagem da logo está dentro de .hero-logo-wrapper */
-/* .hero-title {
-    margin-bottom: 100px;
-} */
+.hero-logo-wrapper img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+}
 
-/* .hero-title img {
-    width: auto;
-} */
+/* ========= ANIMAÇÃO DE FLUTUAÇÃO ========= */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
 
+
+
+
+/* Tooltip elegante - abaixo da logo */
+.hero-logo-wrapper.popup::after {
+    content: "🔎 Clique e saiba mais!";
+    position: absolute;
+    bottom: -40px; /* aparece abaixo da imagem */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #13082A;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: opacity 1s ease, transform 1s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Ao passar o mouse, mostra tooltip */
+.hero-logo-wrapper.popup:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(5px);
+}
+
+/* Tooltip visível ao entrar no site */
+.hero-logo-wrapper.popup.show-on-load::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(5px);
+}
+
+/* ========= TEXTO E BOTÃO ========= */
 .hero-description {
     font-size: 1.25rem;
     margin-bottom: 2rem;
@@ -53,7 +105,7 @@
     font-weight: bold;
 }
 
-.hero-text-and-button { /* Novo wrapper para a descrição e o botão */
+.hero-text-and-button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,13 +124,13 @@
 .hero-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 15px; /* Cantos arredondados */
+    border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    object-fit: cover;
 }
 
-/* Botões */
-.btn { /* Botões gerais, podem ser um componente à parte */
+/* ========= BOTÕES ========= */
+.btn {
     display: inline-block;
     padding: 0.8rem 2rem;
     border-radius: 50px;
@@ -104,10 +156,10 @@
     transform: translateY(-2px);
 }
 
-/* Media Queries */
+/* ========= RESPONSIVO ========= */
 @media (max-width: 992px) {
     .hero-section {
-        flex-direction: column; /* Altera para coluna em mobile */
+        flex-direction: column;
         text-align: center;
         padding-top: 100px;
     }
@@ -116,39 +168,36 @@
         padding: 2rem;
         max-width: 100%;
         margin: 0 auto;
-        /* Reordenar os elementos filhos de hero-content */
-        order: 2; /* Faz com que hero-content apareça depois da imagem */
+        order: 2;
     }
 
     .hero-image {
         padding: 1.5rem;
-        order: 1; /* Faz com que a imagem apareça primeiro */
+        order: 1;
     }
 
     .hero-logo-wrapper {
-        order: 3; /* Faz com que a logo apareça por último */
-        margin-top: 50px; /* Adiciona espaçamento superior para separar da descrição */
-        margin-bottom: 0; /* Remove o espaçamento inferior original */
+        order: 3;
+        margin-top: 50px;
+        margin-bottom: 0;
         display: none;
     }
 
-    /* Ajustes para a imagem da logo em mobile, se necessário */
     .hero-logo-wrapper img {
-        width: 80%; /* Exemplo: ajustar largura da logo em mobile */
-        max-width: 300px; /* Limite máximo para a logo */
+        width: 80%;
+        max-width: 300px;
     }
 
-    .hero-title { /* Este estilo não será mais usado diretamente, mas mantido como referência */
+    .hero-title {
         font-size: 3rem;
     }
 
     .hero-text-and-button {
-        order: 2; /* Faz com que o texto e o botão fiquem entre a imagem e a logo */
+        order: 2;
     }
 }
 
 @media (max-width: 600px) {
-
     .hero-description {
         font-size: 1rem;
     }

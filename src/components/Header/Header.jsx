@@ -1,4 +1,3 @@
-// src/components/Header/Header.jsx
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Header.module.css';
@@ -9,6 +8,7 @@ function Header({ activeSection, scrollToSection }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [showHeaderLogoTooltip, setShowHeaderLogoTooltip] = useState(true); // Estado para controlar o tooltip
 
   useEffect(() => {
     const handleResize = () => {
@@ -18,8 +18,16 @@ function Header({ activeSection, scrollToSection }) {
     window.addEventListener('resize', handleResize);
     handleResize();
 
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    // O timer para o tooltip só é ativado se for mobile na carga inicial
+    const timer = setTimeout(() => {
+      setShowHeaderLogoTooltip(false);
+    }, 2000); // Tooltip aparece por 2 segundos
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timer); // Limpa o timer ao desmontar o componente
+    };
+  }, []); // Executa apenas uma vez ao montar o componente
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -27,7 +35,7 @@ function Header({ activeSection, scrollToSection }) {
 
   const handleNavLinkClick = (id) => {
     scrollToSection(id);
-    setIsOpen(false);
+    setIsOpen(false); // Fecha o menu mobile ao clicar em um item
   };
 
   const navItems = [
@@ -41,7 +49,8 @@ function Header({ activeSection, scrollToSection }) {
   return (
     <header className={styles['main-header']}>
       <div className={styles.container}>
-        <div className={styles.logo}>
+        {/* Adiciona as classes 'popup' e 'show-on-load-header' condicionalmente */}
+        <div className={`${styles.logo} ${styles.popup} ${isMobile && showHeaderLogoTooltip ? styles['show-on-load-header'] : ''}`}>
           <img src={logoClaria} alt="Logo Clariá" />
         </div>
 

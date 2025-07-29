@@ -1,225 +1,306 @@
-/* src/components/Header/Header.module.css */
-
 /* --- Estilos Gerais do Header --- */
 .main-header {
-  background-color: rgba(10, 10, 26, 0.637);
-  padding: 1.5rem 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background-color: rgba(10, 10, 26, 0.637);
+    padding: 1.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    position: relative; /* Essencial para posicionar o pseudo-elemento da lupa e do tooltip */
 }
 
 .logo img {
-  height: 60px;
-  width: auto;
-  vertical-align: middle;
-  padding-left: 250px;
+    height: 60px;
+    width: auto;
+    vertical-align: middle;
+    padding-left: 250px;
+    cursor: pointer; /* Indica que é clicável */
+}
+
+/* Animação para o logo (pulso sutil) */
+@keyframes pulse-search-indicator {
+    0% {
+        transform: scale(1);
+        filter: brightness(100%);
+    }
+    50% {
+        transform: scale(1.05);
+        filter: brightness(120%);
+    }
+    100% {
+        transform: scale(1);
+        filter: brightness(100%);
+    }
+}
+
+/* Pseudo-elemento para o efeito de "lupa" (APENAS MOBILE) */
+.logo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(173, 216, 230, 0.7);
+    border-radius: 50%;
+    background-color: rgba(173, 216, 230, 0.1);
+    box-shadow: 0 0 10px rgba(173, 216, 230, 0.7);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Pseudo-elemento para o tooltip de texto da logo do HEADER (DEFAULT: INVISÍVEL NO DESKTOP) */
+.logo.popup::before {
+    content: "🔎 Clique e saiba mais!"; /* MESMO TEXTO DO HERO */
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #13082A;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    opacity: 0;
+    pointer-events: none; /* Garante que não interfira com cliques */
+    white-space: nowrap;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000001;
 }
 
 /* --- Navegação Principal (Desktop) --- */
 .main-nav {
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 2.5rem; /* Adicionado GAP para espaçar a lista (ul) e o switcher */
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2.5rem;
 }
 
 .nav-list {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-list li {
-  flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 .nav-list--item {
-  font-family: var(--font-heading-secondary);
-  font-weight: 400;
-  font-size: 1.1rem;
-  position: relative;
-  padding: 0.5rem 0.8rem;
-  color: var(--color-light-text);
-  text-decoration: none;
-  transition: color 0.3s ease;
+    font-family: var(--font-heading-secondary);
+    font-weight: 400;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 0.5rem 0.8rem;
+    color: var(--color-light-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .nav-list--item::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-accent-purple);
-  transition: width 0.3s ease;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent-purple);
+    transition: width 0.3s ease;
 }
 
 .nav-list--item:hover::after {
-  width: 100%;
+    width: 100%;
 }
 
 .nav-list--item.active {
-  color: var(--color-accent-purple);
-  font-weight: 700;
-  text-shadow: 0 0 8px rgba(138, 43, 226, 0.6);
+    color: var(--color-accent-purple);
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(138, 43, 226, 0.6);
 }
 
 .nav-list--item.active::after {
-  width: 100%;
-  background: linear-gradient(90deg, var(--color-accent-purple), var(--color-cyan));
+    width: 100%;
+    background: linear-gradient(90deg, var(--color-accent-purple), var(--color-cyan));
 }
 
 /* --- Menu Hambúrguer (Desktop: Escondido) --- */
 .hamburger-button {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  z-index: 10010000;
-  position: relative;
-  width: 40px;
-  height: 30px;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+    display: none; /* Escondido por padrão no desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 10010000;
+    position: relative;
+    width: 40px;
+    height: 30px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .hamburger-bar {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background-color: var(--color-light-text);
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-light-text);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }
 
 .hamburger-button.open .hamburger-bar:nth-child(1) {
-  transform: translateY(12px) rotate(45deg);
+    transform: translateY(12px) rotate(45deg);
 }
 .hamburger-button.open .hamburger-bar:nth-child(2) {
-  opacity: 0;
+    opacity: 0;
 }
 .hamburger-button.open .hamburger-bar:nth-child(3) {
-  transform: translateY(-12px) rotate(-45deg);
+    transform: translateY(-12px) rotate(-45deg);
 }
 
 /* Estilo para o item que contém o LanguageSwitcher no menu mobile */
 .language-switcher-mobile-item {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-  padding-bottom: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
 }
 
 /* --- Media Queries para Mobile (Layout Hambúrguer) --- */
 @media (max-width: 992px) {
-  .container {
-    padding: 0 1rem;
-    justify-content: center;
-    position: relative;
-  }
+    .container {
+        padding: 0 1rem;
+        justify-content: center;
+        position: relative;
+    }
 
-  .logo {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    padding-left: 0;
-  }
+    .logo {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+    }
 
-  .logo img {
-    height: 50px;
-    padding-left: 0;
-  }
+    .logo img {
+        height: 50px;
+        padding-left: 50px;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        animation: pulse-search-indicator 1.5s ease-in-out 1;
+        
+    }
 
-  .main-nav {
-    gap: 0; /* Reseta o gap para o menu mobile */
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
-    background-color: var(--color-dark-blue);
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    transition: right 0.4s ease-in-out;
-    z-index: 10000;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 50px;
-  }
+  
+    .logo::after {
+        width: 55px; 
+        height: 55px;
+        animation: magnify-scan 3s ease-out 1 forwards; /* Aplica a animação da lupa apenas em mobile */
+    }
 
-  .main-nav--open {
-    right: 0;
-  }
+    /* ATIVA O TOOLTIP DE TEXTO APENAS EM MOBILE (sem hover) */
+    .logo.popup::before {
+        opacity: 0; /* Começa invisível */
+        pointer-events: none; /* Não permite interações, apenas mostra */
+        transition: opacity 2s ease, transform 1s ease; /* Transição para aparecer suavemente */
+    }
 
-  .nav-list {
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-  }
+    /* Mostra o tooltip ao carregar em mobile */
+    .logo.popup.show-on-load-header::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(5px);
+    }
 
-  .nav-list li {
-    width: 100%;
-  }
 
-  .nav-list--item {
-    font-size: 1.2rem;
-    padding: 1rem 0;
-    display: block;
-  }
+    .main-nav {
+        gap: 0;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--color-dark-blue);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        transition: right 0.4s ease-in-out;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 50px;
+    }
 
-  .nav-list--item::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
+    .main-nav--open {
+        right: 0;
+    }
 
-  .nav-list--item:hover::after,
-  .nav-list--item.active::after {
-    width: 80%;
-  }
+    .nav-list {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
 
-  .hamburger-button {
-    display: flex;
-  }
+    .nav-list li {
+        width: 100%;
+    }
+
+    .nav-list--item {
+        font-size: 1.2rem;
+        padding: 1rem 0;
+        display: block;
+    }
+
+    .nav-list--item::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-list--item:hover::after,
+    .nav-list--item.active::after {
+        width: 80%;
+    }
+
+    .hamburger-button {
+        display: flex; /* Visível no mobile */
+    }
 }
 
 /* --- Media Queries para Telas Menores --- */
 @media (max-width: 600px) {
-  .logo img {
-    height: 45px;
-  }
-  .main-nav {
-    width: 85%;
-  }
-  .nav-list {
-    gap: 1rem;
-  }
-  .nav-list--item {
-    font-size: 1.1rem;
-  }
+    .logo img {
+        height: 45px;
+    }
+    .main-nav {
+        width: 85%;
+    }
+    .nav-list {
+        gap: 1rem;
+    }
+    .nav-list--item {
+        font-size: 1.1rem;
+    }
 }
